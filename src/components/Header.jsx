@@ -1,4 +1,8 @@
+import Logo from '../assets/logo.svg'
+
 import * as React from 'react';
+
+import { useContext } from 'react';
 
 //mui features
 import { styled, alpha } from '@mui/material/styles';
@@ -10,6 +14,8 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+
+import { PokemonContext, PokemonProvider } from '../contexts/PokemonContext';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -54,6 +60,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
+  const { pokemonFilter } = useContext(PokemonContext)
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -68,15 +75,15 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
+          <Typography 
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Pokedex
+            Pokedex <img className='h-7 w-7' src={Logo}/>
           </Typography>
-          <Search>
+          <Search onChange={(e)=>pokemonFilter(e.target.value)}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
