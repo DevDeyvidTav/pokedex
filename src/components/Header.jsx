@@ -1,3 +1,4 @@
+import {Navigate} from 'react-dom'
 
 import * as React from 'react';
 

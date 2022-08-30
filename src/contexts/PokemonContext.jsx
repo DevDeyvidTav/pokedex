@@ -24,7 +24,17 @@ export const PokemonProvider = ({children}) => {
     
         setPokemons(filteredPokemons);
       };
+    const [infoPokemon, setInfoPokemon] = useState([]);  
+
+    // const tipos = pokemons.data.types
+
+    // const typeHandler = () => {
+    //   if (tipos[1]) {
+    //     return tipos[0].type.name + " | " + types[1].type.name;
+    //   }
+    //   return tipos[0].type.name;
+    // };
     return(
-        <PokemonContext.Provider value={{pokemonFilter, setPokemons, pokemons, getPokemons}}>{children}</PokemonContext.Provider>
+        <PokemonContext.Provider value={{infoPokemon, setInfoPokemon,pokemonFilter, setPokemons, pokemons, getPokemons}}>{children}</PokemonContext.Provider>
     )
 }
