@@ -1,4 +1,3 @@
-import Logo from '../assets/logo.svg'
 
 import * as React from 'react';
 
@@ -81,7 +80,7 @@ export default function Header() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Pokedex <img className='h-7 w-7' src={Logo}/>
+            Pokedex 
           </Typography>
           <Search onChange={(e)=>pokemonFilter(e.target.value)}>
             <SearchIconWrapper>
