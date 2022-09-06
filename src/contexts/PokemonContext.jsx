@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import axios from "axios";
 export const PokemonContext = createContext({})
+import { Navigate } from "react-router-dom";
 
 export const PokemonProvider = ({children}) => {
     const getPokemons = () => {
@@ -12,7 +13,7 @@ export const PokemonProvider = ({children}) => {
       };
     const [ pokemons, setPokemons] = useState([])
     const pokemonFilter = (name) => {
-        var filteredPokemons = [];
+       const filteredPokemons = [];
         if (name === "") {
           getPokemons();
         }
@@ -26,15 +27,10 @@ export const PokemonProvider = ({children}) => {
       };
     const [infoPokemon, setInfoPokemon] = useState([]);  
 
-    // const tipos = pokemons.data.types
-
-    // const typeHandler = () => {
-    //   if (tipos[1]) {
-    //     return tipos[0].type.name + " | " + types[1].type.name;
-    //   }
-    //   return tipos[0].type.name;
-    // };
+    const backToPokemonsSearch = () =>{
+      return <Navigate to="/"/>
+    }
     return(
-        <PokemonContext.Provider value={{infoPokemon, setInfoPokemon,pokemonFilter, setPokemons, pokemons, getPokemons}}>{children}</PokemonContext.Provider>
+        <PokemonContext.Provider value={{backToPokemonsSearch,infoPokemon, setInfoPokemon,pokemonFilter, setPokemons, pokemons, getPokemons}}>{children}</PokemonContext.Provider>
     )
 }

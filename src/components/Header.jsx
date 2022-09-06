@@ -1,4 +1,4 @@
-import {Navigate} from 'react-dom'
+import {NavLink} from 'react-router-dom'
 
 import * as React from 'react';
 
@@ -60,7 +60,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
-  const { pokemonFilter } = useContext(PokemonContext)
+  const { pokemonFilter, backToPokemonsSearch } = useContext(PokemonContext)
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -83,7 +83,7 @@ export default function Header() {
           >
             Pokedex 
           </Typography>
-          <Search onChange={(e)=>pokemonFilter(e.target.value)}>
+         <NavLink to="/" > <Search onChange={(e)=>pokemonFilter(e.target.value)}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -91,7 +91,7 @@ export default function Header() {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
-          </Search>
+          </Search></NavLink>
         </Toolbar>
       </AppBar>
     </Box>
